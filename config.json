@@ -1,0 +1,13 @@
+{
+    "url": "http://192.168.1.108:8085/data.json",
+    "CpuLoad": 110,
+    "CpuTemp": 103,
+    "FanSpeed": 27,
+    "GpuLoad": 168,
+    "GpuTemp": 165,
+    "GpuMemoryTotal": 193,
+    "GpuMemoryUsed": 192,
+    "GpuFanSpeed": 185,
+    "RAMUsed": 154,
+    "RAMAvailable": 155
+}
