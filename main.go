@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -47,14 +48,21 @@ func main() {
 		panic(err)
 	}
 
-	linInfo := getLinuxPCInfo()
-	winInfo := getWinPCInfo(cfg)
+	// --- Эндпоинты ---
+	http.HandleFunc("/getLinuxStat", func(w http.ResponseWriter, r *http.Request) {
+		info := getLinuxPCInfo()
+		data, _ := json.MarshalIndent(info, "", "  ")
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(data)
+	})
 
-	data, _ := json.MarshalIndent(linInfo, "", "  ")
-	fmt.Println("LINUX")
-	fmt.Println(string(data))
+	http.HandleFunc("/getWinStat", func(w http.ResponseWriter, r *http.Request) {
+		info := getWinPCInfo(cfg)
+		data, _ := json.MarshalIndent(info, "", "  ")
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(data)
+	})
 
-	winData, _ := json.MarshalIndent(winInfo, "", "  ")
-	fmt.Println("WIN")
-	fmt.Println(string(winData))
+	fmt.Printf("Server running at http://localhost:%d\n", cfg.Port)
+	http.ListenAndServe(fmt.Sprintf(":%d", cfg.Port), nil)
 }

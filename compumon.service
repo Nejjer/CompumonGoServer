@@ -1,0 +1,20 @@
+[Unit]
+Description=CompuMon Go Server
+After=network.target
+
+[Service]
+Type=simple
+# Рабочая директория, где лежит config.json
+WorkingDirectory=/home/devofy/develop/go/compumon/build
+# Команда запуска
+ExecStart=/home/devofy/develop/go/compumon/build/compumon
+# Перезапуск при падении
+Restart=on-failure
+# Перенаправление логов
+StandardOutput=journal
+StandardError=journal
+# Пользователь для запуска (можно создать отдельного)
+User=devofy
+
+[Install]
+WantedBy=multi-user.target

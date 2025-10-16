@@ -9,5 +9,6 @@
     "GpuMemoryUsed": 192,
     "GpuFanSpeed": 185,
     "RAMUsed": 154,
-    "RAMAvailable": 155
+    "RAMAvailable": 155,
+    "Port": 4040
 }

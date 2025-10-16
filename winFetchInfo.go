@@ -21,6 +21,7 @@ type Config struct {
 	GpuFanSpeed    int    `json:"gpuFanSpeed"`
 	GpuMemoryTotal int    `json:"gpuMemoryTotal"`
 	GpuMemoryUsed  int    `json:"gpuMemoryUsed"`
+	Port           int    `json:"port"`
 }
 
 type Sensor struct {
